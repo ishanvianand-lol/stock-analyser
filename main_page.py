@@ -412,17 +412,17 @@ if stock_name:
                         st.info("Price is exactly at VWAP → neutral / mean reversion zone.")
 
 
-                # Support Resistance Behaviour
+                    # Support Resistance Behaviour
 
-                last_2_close = data_chart['Close'].iloc[-2]
-                last_2_vwap = data_chart['VWAP'].iloc[-2]
+                    last_2_close = data_chart['Close'].iloc[-2]
+                    last_2_vwap = data_chart['VWAP'].iloc[-2]
 
-                if last_2_close < last_2_vwap and recent_close > recent_vwap:
-                    st.warning("Price **broke above VWAP** → potential upward reversal.")
-                elif last_2_close > last_2_vwap and recent_close < recent_vwap:
-                    st.warning("Price **broke below VWAP** → potential downward reversal.")
-                else:
-                    st.info('No Trend Reversal')
+                    if last_2_close < last_2_vwap and recent_close > recent_vwap:
+                        st.warning("Price **broke above VWAP** → potential upward reversal.")
+                    elif last_2_close > last_2_vwap and recent_close < recent_vwap:
+                        st.warning("Price **broke below VWAP** → potential downward reversal.")
+                    else:
+                        st.info('No Trend Reversal')
             
             st.divider()
 
