@@ -65,7 +65,10 @@ st.markdown("""
 st.markdown("<h1 style='text-align: center;'>STOCK PRICES ANALYSER</h1>", unsafe_allow_html=True)
 st.text_input("Stock Name", key="stock_name",placeholder="Enter Stock Symbol (Refer to List of All Stocks)")
 stock_name = st.session_state.stock_name.upper()
-stocks = pd.read_csv(r'D:\Downloads\nasdaq_screener_1764260895479.csv')
+
+import pathlib
+path = pathlib.Path("data/nasdaq_screener.csv")
+stocks = pd.read_csv(path)
 
 
 end_date = datetime.today().strftime('%Y-%m-%d')

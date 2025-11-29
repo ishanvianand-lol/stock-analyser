@@ -58,7 +58,10 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-df = pd.read_csv(r'D:\Downloads\nasdaq_screener_1764260895479.csv')
+import pathlib
+path = pathlib.Path("data/nasdaq_screener.csv")
+df = pd.read_csv(path)
+
 st.title("List of All Stocks")
 filtered_df = df.copy()
 
