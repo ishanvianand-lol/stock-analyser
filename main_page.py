@@ -8,6 +8,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import mplfinance as mpf
+import pathlib
 
 st.set_page_config(layout="wide")
 st.markdown("""
@@ -66,7 +67,6 @@ st.markdown("<h1 style='text-align: center;'>STOCK PRICES ANALYSER</h1>", unsafe
 st.text_input("Stock Name", key="stock_name",placeholder="Enter Stock Symbol (Refer to List of All Stocks)")
 stock_name = st.session_state.stock_name.upper()
 
-import pathlib
 path = pathlib.Path("data/nasdaq_screener.csv")
 stocks = pd.read_csv(path)
 

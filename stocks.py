@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import pathlib
 
 
 with open("style.css", "r") as f:
@@ -58,7 +59,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-import pathlib
 path = pathlib.Path("data/nasdaq_screener.csv")
 df = pd.read_csv(path)
 
