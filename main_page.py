@@ -9,9 +9,6 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import mplfinance as mpf
 
-with open(r"C:\Users\ishanvi\Desktop\projects\stock-portfolio\style.css") as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
 st.set_page_config(layout="wide")
 st.markdown("""
     <style>
@@ -46,6 +43,21 @@ st.markdown("""
         background-color: #e0e0e0;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
+            
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    body {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    font-family: "Poppins", sans-serif;
+    }
+
+    .col2 {
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
     </style>
     """, unsafe_allow_html=True)
 
@@ -225,7 +237,7 @@ if stock_name:
 
                 # Display in Streamlit
                 st.pyplot(fig)
-                col_1, col_2, col_3 = st.columns([1,1,1])
+                col_1, col_2, col_3 = st.columns([1,1,2])
 
                 col_1.metric("Open", f"${stock_data['Open'].iloc[-1][0]:.2f}")
                 col_2.metric("Close", f"${stock_data['Close'].iloc[-1][0]:.2f}")
@@ -418,6 +430,7 @@ if stock_name:
             # using VWAP
             above_vwap = (last3['Close'] > last3['VWAP']).sum()
             below_vwap = (last3['Close'] < last3['VWAP']).sum()
+
 
 
 

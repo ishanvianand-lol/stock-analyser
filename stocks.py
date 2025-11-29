@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-with open(r"C:\Users\ishanvi\Desktop\projects\stock-portfolio\style.css") as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
+with open("style.css", "r") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 st.set_page_config(layout="wide")
 
 st.markdown("""
@@ -14,6 +14,47 @@ st.markdown("""
         padding-left: 3rem;
         padding-right: 3rem;
     }
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        
+    .stock-row {
+    display: flex;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    align-items: center;
+    transition: background 0.2s;
+    }
+    .stock-row:hover {
+    background-color: rgba(255,255,255,0.05);
+    }
+    .stock-row .symbol {
+    width: 15%;
+    font-weight: bold;
+    color: var(--primary-color);
+    }
+    .stock-row .name {
+    width: 45%;
+    }
+    .stock-row .sector {
+    width: 20%;
+    opacity: 0.8;
+    }
+    .stock-row .country {
+    width: 20%;
+    opacity: 0.6;
+    }
+    body {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    font-family: "Poppins", sans-serif;
+    }
+
+    .col2 {
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+
     </style>
     """, unsafe_allow_html=True)
 

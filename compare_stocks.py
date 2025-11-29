@@ -6,9 +6,6 @@ import numpy as np
 from datetime import datetime, timedelta
 from sklearn.linear_model import LinearRegression
 
-with open(r"C:\Users\ishanvi\Desktop\projects\stock-portfolio\style.css") as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
 st.set_page_config(layout="wide")
 
 st.markdown("""
@@ -45,6 +42,20 @@ st.markdown("""
     .stButton > button:active {
         background-color: #e0e0e0;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+            
+     /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    body {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    font-family: "Poppins", sans-serif;
+    }
+
+    .col2 {
+        max-height: 75vh;
+        overflow-y: auto;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -168,6 +179,13 @@ def get_data(stock_name):
         </style>
         """,unsafe_allow_html=True)
     st.markdown("## 📊 **OBSERVATIONS**")
+    
+    col_1, col_2, col_3 = st.columns([1,1,2])
+
+    col_1.metric("Open", f"${stock_data['Open'].iloc[-1][0]:.2f}")
+    col_2.metric("Close", f"${stock_data['Close'].iloc[-1][0]:.2f}")
+    col_3.metric("Volume", f"${stock_data['Volume'].iloc[-1][0]:.2f}")
+
 
     # Trend
     if trend == 'Uptrend':
@@ -253,33 +271,7 @@ def get_data(stock_name):
         st.error(f"📈 **Volatility:** High ({vol:.2%})")
     st.divider()
 
-    # st.selectbox("Time Period", 
-    #              options=["1 day", "1 month", "3 months", "6 months", "1 year"],
-    #              key="time_period_for_chart")
-    # time_period = st.session_state.time_period_for_chart
 
-    # interval = "1d"
-
-    # if time_period == "1 day":
-    #     period = "1d"
-    #     interval = "15m"
-    # elif time_period == "1 month":
-    #     period = "1mo"
-    # elif time_period == "3 months":
-    #     period = "3mo"
-    # elif time_period == "6 months":
-    #     period = "6mo"
-    # elif time_period == "1 year":
-    #     period = "1y"
-
-    # data_for_stock_market_chart = yf.download(stock_name, period=period, 
-    #                                           interval=interval, auto_adjust=True)
-
-    # fig_chart, axes_stock = mpf.plot(data_for_stock_market_chart, type='candle', style='charles', 
-    #         title=f'{stock_name} Candlestick Chart', 
-    #         ylabel='Price (USD)', returnfig=True)  
-
-    # st.pyplot(fig_chart)
 if st.button("COMPARE"):
     col1, col2 = st.columns(2)
     with col1:

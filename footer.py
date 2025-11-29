@@ -72,7 +72,7 @@ def footer():
             <div class="footer-center">               
             </div>
             <div class="footer-right">
-                <a href="https://github.com/ishanvianand-lol" target="_blank">
+                <a href="https://github.com/ishanvianand-lol/stock-analysis" target="_blank">
                     <i class="fab fa-github"></i> Github
                 </a>
                 <a href="https://www.linkedin.com/in/ishanvi-anand-a445a82b3" target="_blank">
