@@ -426,15 +426,7 @@ if stock_name:
             
             st.divider()
 
-            # FINAL ADVICE -> not best
-
-            last3 = data_chart.tail(3)
-
-            # using VWAP
-            above_vwap = (last3['Close'] > last3['VWAP']).sum()
-            below_vwap = (last3['Close'] < last3['VWAP']).sum()
-
-
+            ### FINAL ADVICE -> not best -> future updation
 
 
 from footer import footer
