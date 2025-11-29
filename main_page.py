@@ -62,7 +62,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Skelaton of the website
+# Skeleton of the website
 st.markdown("<h1 style='text-align: center;'>STOCK PRICES ANALYSER</h1>", unsafe_allow_html=True)
 st.text_input("Stock Name", key="stock_name",placeholder="Enter Stock Symbol (Refer to List of All Stocks)")
 stock_name = st.session_state.stock_name.upper()
