@@ -3,22 +3,20 @@ import streamlit as st
 def footer():
     footer_html = """
     <style>
-    /* Import Google Font */
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-      
+
       #MainMenu {visibility: hidden;}
       footer {visibility: hidden;}
-      
-      /* Push content up to make room for footer */
+
       .main .block-container {
-          padding-bottom: 50px;
+          padding-bottom: 80px; /* make more space for footer */
       }
 
       .custom-footer {
           font-family: 'Poppins', sans-serif;
           position: fixed;
           left: 0;
-          bottom: 0;
+          bottom: 0px; 
           width: 100vw;
           background: rgba(0, 0, 0, 0.25);
           color: #f9f9f9;
@@ -27,37 +25,29 @@ def footer():
           font-weight: 500;
           backdrop-filter: blur(15px);
           z-index: 999;
-          margin-left: calc(-50vw + 50%);
-      }
-      
-      .footer-content {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          max-width: 100%;
-          padding: 0 40px;
+          display: flex;
+          justify-content: center;  /* center content horizontally */
           align-items: center;
       }
 
-      .footer-left {
-          text-align: left;
+      .footer-content {
+          display: flex;
+          gap: 20px;
       }
 
-      .footer-center {
-          text-align: center;
-      }
-
-      .footer-right {
-          text-align: right;
-      }
-
-      .footer-right a {
-          margin-left: 15px;
+      .footer-content a {
           color: #70a5ff;
           text-decoration: none;
           transition: color 0.3s ease;
       }
 
-      .footer-right a:hover {
+       .footer-content i {
+          font-size: 20px; /* make icons bigger */
+          vertical-align: middle;
+          margin-right: 5px;
+      }
+
+      .footer-content a:hover {
           color: #ffffff;
       }
     </style>
@@ -66,19 +56,9 @@ def footer():
 
     <div class="custom-footer">
         <div class="footer-content">
-            <div class="footer-left">
-                 <b>Ishanvi Anand</b> &copy; 2025
-            </div>
-            <div class="footer-center">               
-            </div>
-            <div class="footer-right">
-                <a href="https://github.com/ishanvianand-lol" target="_blank">
-                    <i class="fab fa-github"></i> Github
-                </a>
-                <a href="https://www.linkedin.com/in/ishanvi-anand-a445a82b3" target="_blank">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-            </div>
+            <b>Ishanvi Anand &copy; 2025</b>
+            <a href="https://github.com/ishanvianand-lol" target="_blank"><i class="fab fa-github"></i> </a>
+            <a href="https://www.linkedin.com/in/ishanvi-anand-a445a82b3" target="_blank"><i class="fab fa-linkedin"></i> </a>
         </div>
     </div>
     """

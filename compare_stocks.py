@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np  
 from datetime import datetime, timedelta
 from sklearn.linear_model import LinearRegression
+import pathlib
 
 st.set_page_config(layout="wide")
 
@@ -12,7 +13,7 @@ st.markdown("""
     <style>
     .block-container {
         padding-top: 3rem; /* Adjust this value as needed */
-        padding-bottom: 0rem;
+        padding-bottom: 10rem;
         padding-left: 3rem;
         padding-right: 3rem;
     }
@@ -62,13 +63,19 @@ st.markdown("""
 
 st.write("# Compare Stocks")
 
+path = pathlib.Path("data/nasdaq_screener.csv")
+stocks = pd.read_csv(path)
+
 col1, col2 = st.columns(2)
 with col1:
     st.text_input("Enter Stock Symbol 1", key="stock1")
-    stock1 = st.session_state.stock1
+    stock1 = st.session_state.stock1.upper()
+    
 with col2:
     st.text_input("Enter Stock Symbol 2", key="stock2") 
-    stock2 = st.session_state.stock2
+    stock2 = st.session_state.stock2.upper()
+
+
 end_date = datetime.today().strftime('%Y-%m-%d')
 start_date = (datetime.today() - timedelta(days=50)).strftime('%Y-%m-%d')
 def get_data(stock_name):
@@ -271,14 +278,17 @@ def get_data(stock_name):
         st.error(f"📈 **Volatility:** High ({vol:.2%})")
     st.divider()
 
+if stock1 and stock2:
+    if stock1 not in stocks['Symbol'].values or stock2 not in stocks['Symbol'].values:
+        st.warning("Please enter a valid stock symbol.")
+    else:
+        if st.button("COMPARE"):
+            col1, col2 = st.columns(2)
+            with col1:
+                get_data(stock1)
+            with col2:
+                get_data(stock2)
 
-if st.button("COMPARE"):
-    col1, col2 = st.columns(2)
-    with col1:
-        get_data(stock1)
-    with col2:
-        get_data(stock2)
 
-
-import footer
-footer.footer()
+from footer import footer
+footer()
